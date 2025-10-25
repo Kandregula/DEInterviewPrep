@@ -1,0 +1,14 @@
+/*
+https://datalemur.com/questions/sql-average-post-hiatus-1
+
+When we are filtering on a timestamp column always use half open range operator (post_date >= '2021-01-01' and post_date < '2022-01-01'). This will make sure to consider all timestamps.
+BETWEEN '2021-01-01' and '2021-12-31' (includes both low and high dates) - should be used on date columns. closed ranlge operator implicitly cast to '2021-12-31 00:00:00'. 
+That means you lose any rows that occurred later that day.
+
+*/
+
+SELECT user_id, max(post_date::DATE) - min(post_date::DATE) days_between
+FROM posts
+where post_date >= '2021-01-01' and post_date < '2022-01-01'
+group by user_id
+having count(post_id) > 1;
