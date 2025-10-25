@@ -1,1 +1,3 @@
 # DEInterviewPrep
+
+Practice SQL, Python
