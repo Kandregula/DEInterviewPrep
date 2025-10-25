@@ -1,0 +1,30 @@
+/*
+https://datalemur.com/questions/sql-page-with-no-likes
+
+NOT EXISTS is index-friendly and often faster than LEFT JOIN … IS NULL or NOT IN.
+
+It can stop immediately once it finds the first match, because it only cares whether any row exists — not how many.
+
+When you define a PRIMARY KEY or UNIQUE constraint, the database automatically creates an index behind the scenes.
+
+Rule of thumb:
+Index columns used frequently in WHERE, JOIN, and ORDER BY clauses — but not every column.
+
+*/
+
+
+SELECT pages.page_id 
+FROM pages
+left join page_likes
+on pages.page_id = page_likes.page_id
+where page_likes.page_id is null
+order by page_id;
+
+
+SELECT p.page_id
+FROM pages p
+WHERE NOT EXISTS (
+  SELECT 1 FROM page_likes pl
+  WHERE pl.page_id = p.page_id
+);
+
