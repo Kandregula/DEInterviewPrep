@@ -1,0 +1,15 @@
+/*
+https://datalemur.com/questions/sql-histogram-tweets
+Avoid to use functions on date columns in the where condition. they will not use the index.
+*/
+
+SELECT
+tweet_bucket, count(user_id) users_num
+FROM
+(
+SELECT user_id, count(tweet_id) tweet_bucket
+FROM tweets
+WHERE tweet_date BETWEEN '2022-01-01' AND '2022-12-31'
+group by user_id
+) a
+group by 1;                                                                                             
