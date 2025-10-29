@@ -1,0 +1,20 @@
+/*
+
+https://datalemur.com/questions/teams-power-users
+
+Sargable means Search ARGument able — a condition in your WHERE, JOIN, or ON clause that the database can use to search via an index efficiently.
+
+In simple words:
+
+A sargable filter allows the database to use an index seek or range scan instead of scanning every row.
+
+If index is not there on the column scans full table, but still effiective because of the simple comparsion
+
+*/
+
+SELECT sender_id, count(*) 
+FROM messages
+where sent_date >= '2022-08-01' and sent_date < '2022-09-01' --Sargable (Search ARgumentABLE)
+group by 1
+order by 2 desc
+limit 2;
