@@ -1,0 +1,21 @@
+/*
+https://leetcode.com/problems/two-sum/
+
+Approach: on e pass hash table
+
+In python dictionary stores key:value pair in hashtable. In dictionary value can be duplicate but not keys.
+
+ In this approach we are checking if complement is in hashmap (dictionary) if not insert value as key and index as value. In this approach we will stop the search once the complement is found. 
+*/
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+
+        hashmap = {}
+
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in  hashmap:
+                return [i, hashmap[complement]]
+            hashmap[nums[i]] = i   
+        return []
