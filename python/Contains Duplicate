@@ -1,0 +1,22 @@
+/*
+
+https://leetcode.com/problems/contains-duplicate/
+
+Time complexity is O(n) - iterates through list once and in set any operation is O(1) - insert, search & delete.
+Space complexity is O(n) - we are use set data structure to store the values.
+
+Why sets?
+set and dictionaries stores values in a hash table. complete scan is not needed with a hash value you can directly goto the value. since we have only values no key using sets to save the memory and sets dont store duplicates.
+If we lists then we have scan entire list to find the duplicate which increase time complexity by O(n2).
+
+*/
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        
+        duplicate = set()
+        for i in nums:
+            if i in duplicate:
+                return True
+            duplicate.add(i)
+        return False
