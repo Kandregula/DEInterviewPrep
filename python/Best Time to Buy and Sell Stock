@@ -1,8 +1,12 @@
 /*
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
+A single pass algorithm means the program goes through the data only once — from start to end — to get the answer.
+
 Time complexity is O(n) - iterating throgh list once.
-Space complexity is O(1) - Since there are no new data structures created and only 2 new variables are created.
+Space complexity is O(1) - Space complexity increases only when we use data structures (or recursion) whose size grows with input. 
+If you just use a fixed number of variables, it stays constant (O(1)) no matter how big the input gets.
+prices list is an input. so, it is not considered in the space complexity.
 */
 
 class Solution:
