@@ -1,0 +1,31 @@
+**Different ways of creating empty data structures in python?**
+1. List – ordered, mutable, allows duplicates
+my_list = []           # literal syntax (most common)
+my_list = list()       # using constructor
+
+2. Tuple – ordered, immutable, allows duplicates
+my_tuple = ()          # literal
+my_tuple = tuple()     # constructor
+⚠️ Single-element tuple must include a comma:
+t = (5,)               # ✅ tuple with one element
+t = (5)                # ❌ just an int
+
+3. Set – unordered, mutable, unique elements
+my_set = set() 
+my_set = {}            # ❌ creates an empty dict, not a set
+non-empty set:
+my_set = {1, 2, 3}
+
+4. Dictionary (dict) – key–value mapping, unique keys
+my_dict = {}           # literal
+my_dict = dict()       # constructor
+non-empty dictionary:
+my_dict = {"a": 1, "b": 2}
+
+5. String
+s = ""                 # literal
+s = str()              # constructor
+
+
+
+
