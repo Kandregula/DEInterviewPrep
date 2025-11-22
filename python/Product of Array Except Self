@@ -1,0 +1,50 @@
+/*
+https://leetcode.com/problems/product-of-array-except-self/description/
+
+Time complexity is O(n) - because all for loops are at same level
+Space complexity is O(n) 
+
+nums → input array (not counted as extra space)
+
+L → size = length
+
+R → size = length
+
+answer → size = length
+
+So you have 3 arrays, each of size n (where n = length).
+
+Total extra space = n + n + n = 3n.
+
+In Big-O notation, we ignore constants, so 3n becomes:
+
+👉 O(n) extra space.
+
+*/
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+
+        length = len(nums)
+
+        L, R, answer = [0] * length, [0] * length, [0] * length
+
+        L[0], R[-1] = 1,1
+
+        for i in range(length-1):
+
+            L[i+1] = L[i] * nums[i]
+        
+        for i in reversed(range(length-1)):
+
+            R[i] = R[i+1] *nums[i+1]
+
+        for i in range(length):
+
+            answer[i] = L[i] * R[i]
+        
+        return answer
+
+
+        
+        
