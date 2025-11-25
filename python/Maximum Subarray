@@ -1,0 +1,46 @@
+/*
+https://leetcode.com/problems/maximum-subarray/description/
+
+*/
+
+/*
+Kadane's alogrithm:
+As you move through the array:
+1.Keep adding numbers to a running sum - (curr_value+num)
+2.If the sum becomes negative, throw it away and start fresh - max(curr_value+num, num)
+3.Always remember the highest sum you ever saw - max(max_value, curr_value)
+
+Why Kadane is Dynamic Programming:
+Dynamic Programming is:
+
+Using previously computed results (curr_value+num) to build the answer efficiently
+without recomputing everything.
+
+TC: O(n) -- iterated through array once.
+SC: O(1) -- no new data structure created.
+
+You can use Kadane whenever you need:
+
+✔ maximum sum
+✔ from a continuous segment
+✔ in a list of numbers
+
+If the problem has:
+“maximum… subarray / substring / window / segment”
+
+Kadane might apply.
+*/
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+
+        curr_value, max_value = nums[0], nums[0]
+
+        for num in nums[1:]:
+
+            #when running total is negative then restart with new number. if curr_value+numm is negative reset with num
+            curr_value = max(curr_value+num, num)
+            max_value = max(max_value, curr_value)
+        
+        return max_value
+        
